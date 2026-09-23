@@ -25,7 +25,12 @@ NOISE_KEYS = frozenset({"type", "has_more", "url", "_links"})
 
 def _is_noise(value):
     """Check if a value is noise. Preserves False and 0."""
-    return value in NOISE_MARKERS or value == [] or value == {}
+    # Handle unhashable types (lists, dicts) first
+    if isinstance(value, (list, dict)):
+        return len(value) == 0
+
+    # Only hashable values reach here
+    return value in NOISE_MARKERS
 
 
 def clean_response(data) -> dict[Any, Any] | list[Any] | Any:
