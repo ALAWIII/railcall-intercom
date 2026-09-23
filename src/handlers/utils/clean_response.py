@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from typing import Any
 
 NOISE_MARKERS = frozenset(
@@ -33,14 +34,32 @@ def _is_noise(value):
     return value in NOISE_MARKERS
 
 
+def _format_timestamp(value):
+    """Converts Unix timestamp (seconds) to readable ISO-8601 string."""
+    try:
+        # Intercom uses seconds, not milliseconds
+        return datetime.fromtimestamp(value, tz=timezone.utc).isoformat()
+    except (ValueError, TypeError, OSError):
+        return value
+
+
 def clean_response(data) -> dict[Any, Any] | list[Any] | Any:
     """Recursively remove noise from nested dicts and lists."""
     if isinstance(data, dict):
-        return {
-            key: result
-            for key, value in data.items()
-            if key not in NOISE_KEYS and not _is_noise(result := clean_response(value))
-        }
+        cleaned = {}
+        for key, value in data.items():
+            if key in NOISE_KEYS:
+                continue
+
+            # Format Unix timestamps to ISO-8601
+            if key.endswith("_at") and isinstance(value, (int, float)) and value > 0:
+                result = _format_timestamp(value)
+            else:
+                result = clean_response(value)
+
+            if not _is_noise(result):
+                cleaned[key] = result
+        return cleaned
 
     if isinstance(data, list):
         return [
