@@ -1,3 +1,4 @@
+from handlers.utils.body_builder import build_body
 from handlers.utils.constants import INTERCOM_API_BASE_URL, SHARED_HEADERS
 from handlers.utils.make_request import make_request
 from handlers.utils.url_builder import build_url
@@ -26,3 +27,13 @@ class ListContacts(BaseContacts):
 
     def execute(self) -> dict:
         return self._make_request(self.url)
+
+
+class CreateContact(BaseContacts):
+    def __init__(self, inputs: dict, context: dict) -> None:
+        super().__init__(inputs, context)
+        self.url = build_url(self.base_path, [], inputs)
+        self.body = build_body(["email"], inputs)
+
+    def execute(self):
+        return self._make_request(self.url, "POST", self.body)
