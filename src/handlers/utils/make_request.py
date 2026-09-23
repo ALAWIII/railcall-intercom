@@ -13,7 +13,7 @@ def make_request(
     """Reusable HTTP request with error handling for all endpoints."""
     headers = {} if headers is None else headers
     try:
-        data = json.dumps(body).encode("utf-8") if body else None
+        data = json.dumps(body).encode("utf-8") if body is not None else None
         req = urllib.request.Request(url, data=data, headers=headers, method=method)
 
         with urllib.request.urlopen(req, timeout=30) as response:
