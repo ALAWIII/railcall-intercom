@@ -1,6 +1,6 @@
 import json
 
-from handlers.utils.clean_response import clean_response
+from handlers.utils import clean_response
 
 input = json.loads("""
 {

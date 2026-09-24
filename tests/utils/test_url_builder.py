@@ -1,7 +1,6 @@
 from urllib.parse import parse_qs, urlparse
 
-from handlers.utils.constants import INTERCOM_API_BASE_URL
-from handlers.utils.url_builder import build_url
+from handlers.utils import INTERCOM_API_BASE_URL, build_url
 
 
 def test_build_url_full_params():
