@@ -31,7 +31,7 @@
     },
     {
       "name": "create_contact",
-      "description": "You can create a new contact (ie. user or lead).",
+      "description": "You can create a new contact (ie. user or lead), Provide at least one of: email, external_id, or role.",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -85,7 +85,7 @@
             "additionalProperties": true
           }
         },
-        "required": ["email"]
+        "required": []
       },
       "side_effects": "write"
     }
