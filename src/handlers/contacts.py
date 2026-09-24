@@ -7,12 +7,11 @@ from handlers.utils.url_builder import build_url
 class BaseContacts:
     base_path = f"{INTERCOM_API_BASE_URL}/contacts"
 
-    def __init__(self, inputs: dict, context: dict):
+    def __init__(self, inputs: dict, context: dict, token: str):
         self.inputs = inputs
         self.context = context
-        self.token = context.get("env", {}).get("INTERCOM_ACCESS_TOKEN")
         self.headers = {
-            "Authorization": f"Bearer {self.token}",
+            "Authorization": f"Bearer {token}",
         }
         self.headers.update(SHARED_HEADERS)
 
@@ -21,8 +20,8 @@ class BaseContacts:
 
 
 class ListContacts(BaseContacts):
-    def __init__(self, inputs: dict, context: dict) -> None:
-        super().__init__(inputs, context)
+    def __init__(self, inputs: dict, context: dict, access_token: str) -> None:
+        super().__init__(inputs, context, access_token)
         self.url = build_url(self.base_path, ["per_page", "starting_after"], inputs)
 
     def execute(self) -> dict:
@@ -30,8 +29,8 @@ class ListContacts(BaseContacts):
 
 
 class CreateContact(BaseContacts):
-    def __init__(self, inputs: dict, context: dict) -> None:
-        super().__init__(inputs, context)
+    def __init__(self, inputs: dict, context: dict, access_token: str) -> None:
+        super().__init__(inputs, context, access_token)
         self.url = build_url(self.base_path, [], inputs)
         self.body = build_body(["email"], inputs)
 
