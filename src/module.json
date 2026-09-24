@@ -1,93 +1,122 @@
 {
-  "slug": "agi87/intercom",
+  "id": "agi87/intercom",
+  "name": "intercom",
+  "provider": "intercom",
   "version": "0.1.0",
   "description": "Intercom API actions for AI agents.",
   "credential_spec": {
     "provider": "intercom",
-    "fields": ["INTERCOM_ACCESS_TOKEN"]
+    "category": "support",
+    "name": "Intercom",
+    "required": ["INTERCOM_ACCESS_TOKEN"],
+    "shape": "dict",
+    "risk": "high",
+    "read_write": "write"
+  },
+  "requires": {
+    "network": ["api.intercom.io"]
   },
   "license_required": false,
+  "manifest_version": 2,
+
   "commands": [
     {
-      "name": "list_contacts",
-      "description": "You can fetch a list of all contacts (ie. users or leads) in your workspace.",
+      "id": "intercom.list_contacts",
+      "title": "List Intercom Contacts",
+      "description": "Fetches a paginated list of all contacts (users and leads). Max 150 per page. Use starting_after cursor to get the next page. Read-only.",
+      "provider": "intercom",
+      "mode": "read",
+      "risk": "low",
+      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "preview": false,
+      "receipt_required": true,
+
       "input_schema": {
-        "type": "object",
-        "properties": {
-          "per_page": {
-            "type": "integer",
-            "description": "The number of items returned in a single response. Default is 20.",
-            "minimum": 1,
-            "maximum": 150
-          },
-          "starting_after": {
-            "type": "string",
-            "description": "The cursor used for pagination in order to fetch the next page of results."
-          }
+        "per_page": {
+          "type": "integer",
+          "required": false,
+          "description": "The number of items returned in a single response. Default is 20, max is 150."
         },
-        "required": []
-      },
-      "side_effects": "read"
+        "starting_after": {
+          "type": "string",
+          "description": "The cursor used for pagination in order to fetch the next page of results.",
+          "required": false
+        }
+      }
     },
     {
-      "name": "create_contact",
-      "description": "You can create a new contact (ie. user or lead), Provide at least one of: email, external_id, or role.",
+      "id": "intercom.create_contact",
+      "title": "Create a new Intercom contact",
+      "description": "Creates a new user or lead in Intercom. Requires at least one identifier: email, external_id, or role. Returns the created contact object with id and attributes.",
+      "provider": "intercom",
+      "risk": "high",
+      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "preview": true,
+      "receipt_required": true,
+      "mode": "write_requires_approval",
+
       "input_schema": {
-        "type": "object",
-        "properties": {
-          "role": {
-            "type": "string",
-            "description": "The role of the contact."
-          },
-          "external_id": {
-            "type": "string",
-            "description": "A unique identifier for the contact which is given to Intercom"
-          },
-          "email_verified": {
-            "type": "boolean",
-            "description": "Whether the contact's email address has been verified. Set to true to indicate you have verified the contact owns this email address, or false to mark it as unverified. Must be supplied together with an email in the same request; sending it without an email returns a 400."
-          },
-          "email": {
-            "type": "string",
-            "description": "The contacts email"
-          },
-          "phone": {
-            "type": "string",
-            "description": "The contacts phone"
-          },
-          "name": {
-            "type": "string",
-            "description": "The contacts name"
-          },
-          "avatar": {
-            "type": "string",
-            "description": "An image URL containing the avatar of a contact"
-          },
-          "signed_up_at": {
-            "type": "integer",
-            "description": "(Unix timestamp in seconds) The time specified for when a contact signed up."
-          },
-          "last_seen_at": {
-            "type": "integer",
-            "description": "(Unix timestamp in seconds) The time when the contact was last seen (either where the Intercom Messenger was installed or when specified manually)."
-          },
-          "owner_id": {
-            "type": "string",
-            "description": "The id of an admin that has been assigned account ownership of the contact"
-          },
-          "unsubscribed_from_emails": {
-            "type": "boolean",
-            "description": "Whether the contact is unsubscribed from emails"
-          },
-          "custom_attributes": {
-            "type": "object",
-            "description": "Custom attributes for the contact. Values may be strings, numbers, booleans, arrays, or nested objects.",
-            "additionalProperties": true
-          }
+        "role": {
+          "type": "string",
+          "description": "The role of the contact.",
+          "required": false
         },
-        "required": []
-      },
-      "side_effects": "write"
+        "external_id": {
+          "type": "string",
+          "description": "A unique identifier for the contact which is given to Intercom",
+          "required": false
+        },
+        "email": {
+          "type": "string",
+          "description": "The contacts email",
+          "required": false
+        },
+        "email_verified": {
+          "type": "boolean",
+          "description": "Whether the contact's email address has been verified. Set to true to indicate you have verified the contact owns this email address, or false to mark it as unverified. Must be supplied together with an email in the same request; sending it without an email returns a 400.",
+          "required": false
+        },
+        "phone": {
+          "type": "string",
+          "description": "The contacts phone",
+          "required": false
+        },
+        "name": {
+          "type": "string",
+          "description": "The contacts name",
+          "required": false
+        },
+        "avatar": {
+          "type": "string",
+          "description": "An image URL containing the avatar of a contact",
+          "required": false
+        },
+        "signed_up_at": {
+          "type": "integer",
+          "description": "(Unix timestamp in seconds) The time specified for when a contact signed up.",
+          "required": false
+        },
+        "last_seen_at": {
+          "type": "integer",
+          "description": "(Unix timestamp in seconds) The time when the contact was last seen (either where the Intercom Messenger was installed or when specified manually).",
+          "required": false
+        },
+        "owner_id": {
+          "type": "string",
+          "description": "The id of an admin that has been assigned account ownership of the contact",
+          "required": false
+        },
+        "unsubscribed_from_emails": {
+          "type": "boolean",
+          "description": "Whether the contact is unsubscribed from emails",
+          "required": false
+        },
+        "custom_attributes": {
+          "type": "object",
+          "description": "Custom attributes for the contact. Values may be strings, numbers, booleans, arrays, or nested objects.",
+          "required": false
+        }
+      }
     }
   ]
 }
