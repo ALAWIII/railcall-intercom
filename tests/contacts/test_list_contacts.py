@@ -1,12 +1,12 @@
 from handlers.contacts import ListContacts
-from tests.support.constants import CONTEXT
+from tests.support.constants import INTERCOM_ACCESS_TOKEN
 
 
 class TestListContacts:
     """Test ListContacts endpoint logic."""
 
     def test_list_contacts_returns_200(self):
-        lc = ListContacts({"per_page": 5}, CONTEXT)
+        lc = ListContacts({"per_page": 5}, {}, INTERCOM_ACCESS_TOKEN)
         response = lc.execute()
 
         # 1. Not an error response
@@ -37,8 +37,8 @@ class TestListContacts:
                 assert "T" in contact["created_at"]
 
     def test_list_contacts_invalid_token_returns_error(self):
-        bad_context = {"env": {"INTERCOM_ACCESS_TOKEN": "invalid_token"}}
-        lc = ListContacts({}, bad_context)
+        bad_access_token = "invalid_token"
+        lc = ListContacts({}, {}, bad_access_token)
         response = lc.execute()
 
         assert response["status"] == "error"

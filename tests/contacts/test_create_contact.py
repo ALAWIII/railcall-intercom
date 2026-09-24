@@ -1,7 +1,7 @@
 import uuid
 
 from handlers.contacts import CreateContact
-from tests.support.constants import CONTEXT
+from tests.support.constants import INTERCOM_ACCESS_TOKEN
 
 
 class TestCreateContact:
@@ -9,7 +9,7 @@ class TestCreateContact:
         # Generate unique email for each test run
         unique_email = f"test-{uuid.uuid4()}@example.com"
 
-        cc = CreateContact({"email": unique_email}, CONTEXT)
+        cc = CreateContact({"email": unique_email}, {}, INTERCOM_ACCESS_TOKEN)
         response = cc.execute()
         # Assert success
         assert "status" not in response or response.get("status") != "error"
@@ -19,13 +19,13 @@ class TestCreateContact:
         assert response["email"] == unique_email
 
     def test_create_contact_invalid_token_returns_error(self):
-        bad_context = {"env": {"INTERCOM_ACCESS_TOKEN": "invalid_token"}}
+        bad_access_token = "invalid_token"
         expected_response = {
             "code": 401,
             "message": "Access Token Invalid",
             "status": "error",
         }
-        cc = CreateContact({"email": "shawarma@hotgirl.com"}, bad_context)
+        cc = CreateContact({"email": "shawarma@hotgirl.com"}, {}, bad_access_token)
         response = cc.execute()
 
         assert response == expected_response
