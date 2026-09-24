@@ -16,11 +16,11 @@ def _get_intercom_access_token() -> str:
     return token
 
 
-def list_contacts(inputs: dict, context: dict) -> dict:
+def intercom_list_contacts(inputs: dict, context: dict) -> dict:
     token = _get_intercom_access_token()
     return ListContacts(inputs, context, token).execute()
 
 
-def create_contact(inputs: dict, context: dict) -> dict:
+def intercom_create_contact(inputs: dict, context: dict) -> dict:
     token = _get_intercom_access_token()
     return CreateContact(inputs, context, token).execute()
