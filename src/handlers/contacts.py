@@ -1,7 +1,10 @@
-from handlers.utils.body_builder import build_body
-from handlers.utils.constants import INTERCOM_API_BASE_URL, SHARED_HEADERS
-from handlers.utils.make_request import make_request
-from handlers.utils.url_builder import build_url
+from handlers.utils import (
+    INTERCOM_API_BASE_URL,
+    SHARED_HEADERS,
+    build_body,
+    build_url,
+    make_request,
+)
 
 
 class BaseContacts:
