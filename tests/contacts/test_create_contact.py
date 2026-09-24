@@ -1,6 +1,6 @@
 import uuid
 
-from handlers.contacts import CreateContact
+from handlers.api import CreateContact
 from tests.support.constants import INTERCOM_ACCESS_TOKEN
 
 

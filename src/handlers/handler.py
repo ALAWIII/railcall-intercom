@@ -1,6 +1,6 @@
 import os
 
-from handlers.contacts import CreateContact, ListContacts
+from api import CreateContact, ListContacts
 
 
 def _get_intercom_access_token() -> str:

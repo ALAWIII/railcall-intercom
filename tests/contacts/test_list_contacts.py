@@ -1,4 +1,4 @@
-from handlers.contacts import ListContacts
+from handlers.api import ListContacts
 from tests.support.constants import INTERCOM_ACCESS_TOKEN
 
 
