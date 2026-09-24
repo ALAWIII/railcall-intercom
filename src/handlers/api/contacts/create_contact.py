@@ -1,5 +1,5 @@
 from handlers.api.contacts.base_contacts import BaseContacts
-from handlers.utils import build_body, build_url
+from handlers.utils import InputValidator, build_body, build_url
 
 create_contact_body_fields = [
     "email",
@@ -15,10 +15,12 @@ create_contact_body_fields = [
     "unsubscribed_from_emails",
     "custom_attributes",
 ]
+at_least = [{"fields": ["email", "role", "external_id"], "count": 1}]
 
 
 class CreateContact(BaseContacts):
     def __init__(self, inputs: dict, context: dict, access_token: str) -> None:
+        InputValidator(inputs, at_least=at_least).validate()
         super().__init__(inputs, context, access_token)
         self.url = build_url(self.base_path, [], inputs)
 

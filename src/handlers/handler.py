@@ -16,13 +16,14 @@ def _get_intercom_access_token() -> str:
     return token
 
 
+# ======================================================== handlers
+
+
 def intercom_list_contacts(inputs: dict, context: dict) -> dict:
     token = _get_intercom_access_token()
     return ListContacts(inputs, context, token).execute()
 
 
 def intercom_create_contact(inputs: dict, context: dict) -> dict:
-    if not any([inputs.get("email"), inputs.get("external_id"), inputs.get("role")]):
-        raise RuntimeError("At least one of email, external_id, or role is required.")
     token = _get_intercom_access_token()
     return CreateContact(inputs, context, token).execute()
