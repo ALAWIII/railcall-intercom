@@ -33,7 +33,7 @@
 
       "input_schema": {
         "per_page": {
-          "type": "integer",
+          "type": "number",
           "required": false,
           "description": "The number of items returned in a single response. Default is 20, max is 150."
         },
@@ -92,12 +92,12 @@
           "required": false
         },
         "signed_up_at": {
-          "type": "integer",
+          "type": "number",
           "description": "(Unix timestamp in seconds) The time specified for when a contact signed up.",
           "required": false
         },
         "last_seen_at": {
-          "type": "integer",
+          "type": "number",
           "description": "(Unix timestamp in seconds) The time when the contact was last seen (either where the Intercom Messenger was installed or when specified manually).",
           "required": false
         },
