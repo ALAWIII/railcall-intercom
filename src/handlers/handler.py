@@ -2,6 +2,7 @@ import os
 
 from api import (
     CreateContact,
+    CreateConversation,
     DeleteContact,
     DeleteConversation,
     ListContacts,
@@ -75,3 +76,8 @@ def intercom_delete_conversation(inputs: dict, context: dict) -> dict:
 def intercom_retrieve_conversation(inputs: dict, context: dict) -> dict:
     token = _get_intercom_access_token()
     return RetrieveConversation(inputs, context, token).execute()
+
+
+def intercom_create_conversation(inputs: dict, context: dict) -> dict:
+    token = _get_intercom_access_token()
+    return CreateConversation(inputs, context, token).execute()

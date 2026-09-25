@@ -351,6 +351,55 @@
           "description": "If set to true, conversation parts will be translated to the detected language of the conversation."
         }
       }
+    },
+    {
+      "id": "intercom.create_conversation",
+      "title": "Creates a conversation.",
+      "description": "You can create a conversation that has been initiated by a contact (ie. user or lead).\nThe conversation can be an in-app message only.",
+      "provider": "intercom",
+      "risk": "high",
+      "mode": "write_requires_approval",
+      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "preview": true,
+      "receipt_required": true,
+
+      "input_schema": {
+        "from_type": {
+          "type": "string",
+          "description": "The role associated, one value of: [lead, user, contact].",
+          "required": true
+        },
+        "from_id": {
+          "type": "string",
+          "description": "The identifier for the contact which is given by Intercom, should be uuid formatted with length 24.",
+          "required": true
+        },
+        "body": {
+          "type": "string",
+          "description": "The content of the message. HTML is not supported.",
+          "required": false
+        },
+        "subject": {
+          "type": "string",
+          "description": "The title of the email. Only applicable if the message type is email.",
+          "required": false
+        },
+        "attachment_urls": {
+          "type": "array",
+          "required": false,
+          "description": "A list of image URLs that will be added as attachments. You can include up to 10 URLs."
+        },
+        "created_at": {
+          "type": "number",
+          "description": "The time the conversation was created as a UTC Unix timestamp. If not provided, the current time will be used. Example: 1671028894.",
+          "required": false
+        },
+        "brand_id": {
+          "type": "string",
+          "description": "The unique identifier of the brand to associate with this conversation. Example: '123'.",
+          "required": false
+        }
+      }
     }
   ]
 }
