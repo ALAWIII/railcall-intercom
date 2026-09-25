@@ -443,6 +443,64 @@
           "required": false
         }
       }
+    },
+    {
+      "id": "intercom.reply_conversation",
+      "title": "Reply to a conversation.",
+      "description": "You can reply to a conversation with a message from an admin or on behalf of a contact, or with a note for admins, if you set type = 'user', then exactly one field of [intercom_user_id, email, user_id] should be provided, otherwise if you set type = 'admin' then you have to provide only 'admin_id'.",
+      "provider": "intercom",
+      "risk": "high",
+      "mode": "write_requires_approval",
+      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "preview": true,
+      "receipt_required": true,
+      "input_schema": {
+        "conversation_id": {
+          "type": "number",
+          "description": "The ID of the conversation to reply to.",
+          "required": true
+        },
+        "message_type": {
+          "type": "string",
+          "description": "'comment' (visible to user) or 'note' (internal team note), if type = 'admin' then message_type accepts ['comment' or 'note'], otherwise type = 'user' accepts only 'note' .",
+          "required": true
+        },
+        "type": {
+          "type": "string",
+          "description": "'admin' or 'user'. Who is sending the reply.",
+          "required": true
+        },
+        "admin_id": {
+          "type": "number",
+          "description": "The ID of the admin sending the reply. Required if type = 'admin'.",
+          "required": false
+        },
+        "body": {
+          "type": "string",
+          "description": "The text content of the reply, not required only when type = 'admin'.",
+          "required": false
+        },
+        "attachment_urls": {
+          "type": "array",
+          "description": "A list of image URLs that will be added as attachments. You can include up to 10 URLs.",
+          "required": false
+        },
+        "intercom_user_id": {
+          "type": "string",
+          "description": "The identifier for the contact as given by Intercom, only required when type = 'user'.",
+          "required": false
+        },
+        "email": {
+          "type": "string",
+          "description": "The email you have defined for the user, only required when type = 'user'.",
+          "required": false
+        },
+        "user_id": {
+          "type": "string",
+          "description": "The external_id you have defined for the contact, only required when type = 'user'.",
+          "required": false
+        }
+      }
     }
   ]
 }

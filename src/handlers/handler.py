@@ -8,6 +8,7 @@ from api import (
     ListContacts,
     ListConversations,
     MergeContact,
+    ReplyConversation,
     RetrieveConversation,
     ShowContact,
     UpdateContact,
@@ -87,3 +88,8 @@ def intercom_create_conversation(inputs: dict, context: dict) -> dict:
 def intercom_update_conversation(inputs: dict, context: dict) -> dict:
     token = _get_intercom_access_token()
     return UpdateConversation(inputs, context, token).execute()
+
+
+def intercom_reply_conversation(inputs: dict, context: dict) -> dict:
+    token = _get_intercom_access_token()
+    return ReplyConversation(inputs, context, token).execute()
