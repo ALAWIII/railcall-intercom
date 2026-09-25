@@ -501,6 +501,18 @@
           "required": false
         }
       }
+    },
+    {
+      "id": "intercom.identify_admin",
+      "title": "Identify admin",
+      "description": "View the currently authenticated admin along with workspace information.",
+      "provider": "intercom",
+      "risk": "low",
+      "mode": "read",
+      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "preview": false,
+      "receipt_required": true,
+      "input_schema": {}
     }
   ]
 }

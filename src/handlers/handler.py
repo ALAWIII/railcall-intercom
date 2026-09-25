@@ -5,6 +5,7 @@ from api import (
     CreateConversation,
     DeleteContact,
     DeleteConversation,
+    IdentifyAdmin,
     ListContacts,
     ListConversations,
     MergeContact,
@@ -27,6 +28,14 @@ def _get_intercom_access_token() -> str:
         raise ValueError("Missing INTERCOM_ACCESS_TOKEN")
 
     return token
+
+
+# ======================================================== admins handlers
+
+
+def intercom_identify_admin(inputs: dict, context: dict) -> dict:
+    token = _get_intercom_access_token()
+    return IdentifyAdmin(inputs, context, token).execute()
 
 
 # ======================================================== contacts handlers
