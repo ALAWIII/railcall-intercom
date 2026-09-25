@@ -58,7 +58,7 @@
       "input_schema": {
         "role": {
           "type": "string",
-          "description": "The role of the contact.",
+          "description": "The role of the contact, (pass one option of the list: [lead, user]).",
           "required": false
         },
         "external_id": {
@@ -182,7 +182,7 @@
         },
         "role": {
           "type": "string",
-          "description": "The role of the contact.",
+          "description": "The role of the contact, (pass one option of the list: [lead, user]).",
           "required": false
         },
         "external_id": {
@@ -238,6 +238,39 @@
         "custom_attributes": {
           "type": "object",
           "description": "Custom attributes for the contact. Values may be strings, numbers, booleans, arrays, or nested objects.",
+          "required": false
+        }
+      }
+    },
+    {
+      "id": "intercom.merge_contact",
+      "title": "Merge a lead and a user",
+      "description": "Merges a lead contact into a user contact. The lead contact is permanently destroyed and cannot be recovered. Provide skip_duplicate_validation='true' if the contacts share no matching email or phone.",
+      "provider": "intercom",
+      "risk": "high",
+      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "preview": true,
+      "receipt_required": true,
+      "mode": "write_requires_approval",
+      "input_schema": {
+        "from": {
+          "type": "string",
+          "description": "The unique identifier for the contact to merge away from. Must be a lead.",
+          "required": true
+        },
+        "into": {
+          "type": "string",
+          "description": "The unique identifier for the contact to merge into. Must be a user.",
+          "required": true
+        },
+        "skip_duplicate_validation": {
+          "type": "boolean",
+          "description": "Set to `true` to merge two contacts that are not duplicates (they share no matching email or phone).",
+          "required": false
+        },
+        "include_merge_history": {
+          "type": "boolean",
+          "description": "(query url parameter); Pass `true` to include the merge history of the resulting contact in the response. Only returned for contacts with a `user` role.",
           "required": false
         }
       }
