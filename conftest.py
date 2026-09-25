@@ -84,3 +84,17 @@ def create_function_conversation():
 @pytest.fixture(scope="class", name="class_conversation")
 def create_class_conversation():
     return create_test_conversation()
+
+
+# =====================
+
+
+from handlers.api.admins import IdentifyAdmin
+
+
+@pytest.fixture(scope="class", name="class_admin")
+def fetch_class_admin():
+    """Fetch the authenticated admin info."""
+    endpoint = IdentifyAdmin({}, {}, INTERCOM_ACCESS_TOKEN)
+    response = endpoint.execute()
+    return response
