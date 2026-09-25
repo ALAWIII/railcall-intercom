@@ -1,6 +1,6 @@
 import uuid
 
-from handlers.api.contacts import CreateContact, MergeContact
+from handlers.api.contacts import CreateContact, MergeContact, ShowContact
 from tests.support.constants import INTERCOM_ACCESS_TOKEN
 
 
@@ -41,6 +41,18 @@ class TestMergeContact:
         assert response.get("status") != "error", response
         assert response.get("id") == user["id"]
         assert response.get("role") == "user"
+        # ============== check 410 Gone after success merging the contact
+        show_endpoint = ShowContact(
+            {"contact_id": lead["id"]},
+            {},
+            INTERCOM_ACCESS_TOKEN,
+        )
+
+        show_response = show_endpoint.execute()
+
+        assert show_response["status"] == "error"
+        assert show_response["code"] == 410
+        assert "merged" in show_response["message"].lower()
 
     def test_merge_contact_bad_request(self):
         user_one = _create_contact("user")
