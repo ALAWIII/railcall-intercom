@@ -45,6 +45,6 @@ def create_class_contact() -> ContactInfo:
     return create_test_contact()
 
 
-@pytest.fixture(scope="class", name="function_contact")
+@pytest.fixture(scope="function", name="function_contact")
 def create_function_contact() -> ContactInfo:
     return create_test_contact()
