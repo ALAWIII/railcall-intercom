@@ -4,6 +4,7 @@ from api import (
     CreateContact,
     DeleteContact,
     ListContacts,
+    ListConversations,
     MergeContact,
     ShowContact,
     UpdateContact,
@@ -23,7 +24,7 @@ def _get_intercom_access_token() -> str:
     return token
 
 
-# ======================================================== handlers
+# ======================================================== contacts handlers
 
 
 def intercom_list_contacts(inputs: dict, context: dict) -> dict:
@@ -54,3 +55,11 @@ def intercom_update_contact(inputs: dict, context: dict) -> dict:
 def intercom_merge_contact(inputs: dict, context: dict) -> dict:
     token = _get_intercom_access_token()
     return MergeContact(inputs, context, token).execute()
+
+
+# ======================================================== conversations handlers
+
+
+def intercom_list_conversations(inputs: dict, context: dict) -> dict:
+    token = _get_intercom_access_token()
+    return ListConversations(inputs, context, token).execute()

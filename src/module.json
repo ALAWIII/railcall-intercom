@@ -274,6 +274,30 @@
           "required": false
         }
       }
+    },
+    {
+      "id": "intercom.list_conversations",
+      "title": "List all conversations",
+      "description": "Fetches a paginated list of all conversations. Use the `starting_after` cursor from the previous response to fetch subsequent pages.",
+      "provider": "intercom",
+      "mode": "read",
+      "risk": "low",
+      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "preview": false,
+      "receipt_required": true,
+
+      "input_schema": {
+        "per_page": {
+          "type": "number",
+          "required": false,
+          "description": "The number of items returned in a single response. Default is 20, max is 150."
+        },
+        "starting_after": {
+          "type": "string",
+          "description": "The cursor used for pagination. Extract this value from the `pages.next.starting_after` field of the previous API response.",
+          "required": false
+        }
+      }
     }
   ]
 }
