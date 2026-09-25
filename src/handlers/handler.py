@@ -2,6 +2,8 @@ import os
 
 from api import CreateContact, ListContacts
 
+from handlers.api.contacts import DeleteContact
+
 
 def _get_intercom_access_token() -> str:
     try:
@@ -32,3 +34,8 @@ def intercom_create_contact(inputs: dict, context: dict) -> dict:
 def intercom_show_contact(inputs: dict, context: dict) -> dict:
     token = _get_intercom_access_token()
     return CreateContact(inputs, context, token).execute()
+
+
+def intercom_delete_contact(inputs: dict, context: dict) -> dict:
+    token = _get_intercom_access_token()
+    return DeleteContact(inputs, context, token).execute()

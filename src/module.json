@@ -140,6 +140,24 @@
           "required": false
         }
       }
+    },
+    {
+      "id": "intercom.delete_contact",
+      "title": "Delete a contact by its id",
+      "description": "Permanently deletes a single contact by its ID. Warning: Intercom deletions are permanent and cannot be undone.",
+      "provider": "intercom",
+      "risk": "high",
+      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "preview": true,
+      "receipt_required": true,
+      "mode": "write_requires_approval",
+      "input_schema": {
+        "contact_id": {
+          "type": "string",
+          "description": "The Intercom ID of the contact to delete.",
+          "required": true
+        }
+      }
     }
   ]
 }
