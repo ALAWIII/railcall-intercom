@@ -11,6 +11,7 @@ from api import (
     RetrieveConversation,
     ShowContact,
     UpdateContact,
+    UpdateConversation,
 )
 
 
@@ -81,3 +82,8 @@ def intercom_retrieve_conversation(inputs: dict, context: dict) -> dict:
 def intercom_create_conversation(inputs: dict, context: dict) -> dict:
     token = _get_intercom_access_token()
     return CreateConversation(inputs, context, token).execute()
+
+
+def intercom_update_conversation(inputs: dict, context: dict) -> dict:
+    token = _get_intercom_access_token()
+    return UpdateConversation(inputs, context, token).execute()

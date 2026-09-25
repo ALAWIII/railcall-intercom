@@ -400,6 +400,49 @@
           "required": false
         }
       }
+    },
+    {
+      "id": "intercom.update_conversation",
+      "title": "Update a conversation.",
+      "description": "You can update an existing conversation. This endpoint handles both conversation updates and custom object associations.",
+      "provider": "intercom",
+      "risk": "high",
+      "mode": "write_requires_approval",
+      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "preview": true,
+      "receipt_required": true,
+      "input_schema": {
+        "conversation_id": {
+          "type": "number",
+          "description": "The id of the conversation to target, should be integer.",
+          "required": true
+        },
+        "display_as": {
+          "type": "string",
+          "description": "Set to 'plaintext' to retrieve conversation messages in plain text.",
+          "required": false
+        },
+        "read": {
+          "type": "boolean",
+          "description": "Pass 'true' to mark the conversation as read.",
+          "required": false
+        },
+        "title": {
+          "type": "string",
+          "description": "The title given to the conversation.",
+          "required": false
+        },
+        "custom_attributes": {
+          "type": "object",
+          "description": "Key-value pairs of custom attributes to attach. Example: {\"paid_subscriber\": true, \"monthly_spend\": 155.5}. Note: Workspace must not have duplicate custom attribute names.",
+          "required": false
+        },
+        "company_id": {
+          "type": "string",
+          "description": "The unique Intercom ID of the company to associate. Set to null to remove.",
+          "required": false
+        }
+      }
     }
   ]
 }
