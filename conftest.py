@@ -10,7 +10,7 @@ import uuid
 
 import pytest
 
-from handlers.api.contacts import CreateContact
+from handlers.api import CreateContact, CreateConversation
 from tests.support.constants import INTERCOM_ACCESS_TOKEN
 
 
@@ -48,3 +48,39 @@ def create_class_contact() -> ContactInfo:
 @pytest.fixture(scope="function", name="function_contact")
 def create_function_contact() -> ContactInfo:
     return create_test_contact()
+
+
+# =================
+
+
+class ConversationInfo:
+    def __init__(self, response: dict, contact_nfo: ContactInfo):
+        self.message_id = response["id"]
+        self.conversation_id = response["conversation_id"]
+        self.type = response["type"]
+        self.message_type = response["message_type"]
+        self.body = response["body"]
+        self.contact_nfo = contact_nfo
+
+
+def create_test_conversation():
+    """Create a conversation to be deleted."""
+    contact_info = create_test_contact()
+    inputs = {
+        "from_type": "user",
+        "from_id": contact_info.id,
+        "body": "Conversation to be deleted",
+    }
+    endpoint = CreateConversation(inputs, {}, INTERCOM_ACCESS_TOKEN)
+    response = endpoint.execute()
+    return ConversationInfo(response, contact_info)
+
+
+@pytest.fixture(scope="function", name="function_conversation")
+def create_function_conversation():
+    return create_test_conversation()
+
+
+@pytest.fixture(scope="class", name="class_conversation")
+def create_class_conversation():
+    return create_test_conversation()
