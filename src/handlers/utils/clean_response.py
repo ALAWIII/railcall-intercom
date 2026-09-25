@@ -21,7 +21,12 @@ NOISE_MARKERS = frozenset(
     }
 )
 
-NOISE_KEYS = frozenset({"type", "has_more", "url", "_links"})
+NOISE_KEYS = frozenset({"has_more", "url", "_links"})
+
+# Add a separate set for noise type values
+NOISE_TYPE_VALUES = frozenset(
+    {"pages", "addressable_list", "error.list", "location", "list", "array", "string"}
+)
 
 
 def _is_noise(value):
@@ -49,6 +54,10 @@ def clean_response(data) -> dict[Any, Any] | list[Any] | Any:
         cleaned = {}
         for key, value in data.items():
             if key in NOISE_KEYS:
+                continue
+
+            # Strip "type" only if it's a structural wrapper, not a domain value
+            if key == "type" and value in NOISE_TYPE_VALUES:
                 continue
 
             # Format Unix timestamps to ISO-8601

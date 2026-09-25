@@ -28,7 +28,7 @@ class TestListContacts:
         # 5. Each contact has core fields and no noise
         for contact in response["data"]:
             assert "id" in contact
-            assert "type" not in contact  # stripped by NOISE_KEYS
+            assert "type" in contact  # stripped by NOISE_KEYS
             assert "phone" not in contact or contact["phone"] is not None
             assert "avatar" not in contact or contact["avatar"] is not None
 

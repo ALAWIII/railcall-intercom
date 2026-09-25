@@ -122,11 +122,13 @@ expected = json.loads("""
     "opted_out_subscription_types": {"total_count": 0},
     "opted_in_subscription_types": {"total_count": 0},
     "sms_consent": false,
-    "unsubscribed_from_sms": false
+    "unsubscribed_from_sms": false,
+    "type": "contact"
 }
 
 """)
 
 
 def test_clean_response():
-    assert clean_response(input) == expected
+    cleaned = clean_response(input)
+    assert cleaned == expected
