@@ -19,14 +19,3 @@ class TestShowContact:
 
         assert response["status"] == "error"
         assert response["code"] == 401
-
-    # @pytest.mark.skipif(
-    #     not MERGED_CONTACT_ID,
-    #     reason="Set INTERCOM_MERGED_CONTACT_ID to a merged-away contact ID",
-    # )
-    # def test_show_merged_contact_returns_410(self):
-    #     endpoint = ShowContact({"contact_id": MERGED_CONTACT_ID}, CONTEXT, TOKEN)
-    #     response = endpoint.execute()
-
-    #     assert response["status"] == "error"
-    #     assert response["code"] == 410
