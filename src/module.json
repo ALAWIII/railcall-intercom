@@ -39,7 +39,7 @@
         },
         "starting_after": {
           "type": "string",
-          "description": "The cursor used for pagination in order to fetch the next page of results.",
+          "description": "The cursor used for pagination. Extract this value from the `pages.next.starting_after` field of the previous API response.",
           "required": false
         }
       }
