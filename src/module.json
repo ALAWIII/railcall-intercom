@@ -322,6 +322,35 @@
           "required": false
         }
       }
+    },
+    {
+      "id": "intercom.retrieve_conversation",
+      "title": "Fetches a conversation by its id.",
+      "description": "You can fetch the details of a single conversation.This will return a single Conversation model with all its conversation parts.",
+      "provider": "intercom",
+      "risk": "low",
+      "mode": "read",
+      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "preview": false,
+      "receipt_required": true,
+
+      "input_schema": {
+        "conversation_id": {
+          "type": "number",
+          "description": "conversation id should be integer number",
+          "required": true
+        },
+        "display_as": {
+          "type": "string",
+          "required": false,
+          "description": "Set to plaintext to retrieve conversation messages in plain text. This affects both the body and subject fields. Inline links are rendered as `label (url)`, preserving the link URL alongside the visible text."
+        },
+        "include_translations": {
+          "type": "boolean",
+          "required": false,
+          "description": "If set to true, conversation parts will be translated to the detected language of the conversation."
+        }
+      }
     }
   ]
 }
