@@ -1,5 +1,20 @@
 from handlers.utils import INTERCOM_API_BASE_URL, SHARED_HEADERS, make_request
 
+CONTACT_FIELDS = [
+    "email",
+    "role",
+    "external_id",
+    "phone",
+    "email_verified",
+    "name",
+    "avatar",
+    "signed_up_at",
+    "last_seen_at",
+    "owner_id",
+    "unsubscribed_from_emails",
+    "custom_attributes",
+]
+
 
 class BaseContacts:
     base_path = f"{INTERCOM_API_BASE_URL}/contacts"
