@@ -298,6 +298,30 @@
           "required": false
         }
       }
+    },
+    {
+      "id": "intercom.delete_conversation",
+      "title": "Delete a conversation by its id.",
+      "description": "Permanently deletes a single conversation. If `retain_metrics=true` (default), reporting data is kept. If `retain_metrics=false`, all reporting data is also deleted (requires `delete_conversations_and_metrics` OAuth scope).",
+      "provider": "intercom",
+      "risk": "high",
+      "mode": "write_requires_approval",
+      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "preview": true,
+      "receipt_required": true,
+
+      "input_schema": {
+        "conversation_id": {
+          "type": "number",
+          "description": "conversation id should be integer number",
+          "required": true
+        },
+        "retain_metrics": {
+          "type": "boolean",
+          "description": "Pass 'true' (default) to delete the conversation while retaining reporting data. Pass 'false' to delete the conversation and all associated reporting data (requires `delete_conversations_and_metrics` scope).",
+          "required": false
+        }
+      }
     }
   ]
 }

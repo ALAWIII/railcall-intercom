@@ -3,6 +3,7 @@ import os
 from api import (
     CreateContact,
     DeleteContact,
+    DeleteConversation,
     ListContacts,
     ListConversations,
     MergeContact,
@@ -63,3 +64,8 @@ def intercom_merge_contact(inputs: dict, context: dict) -> dict:
 def intercom_list_conversations(inputs: dict, context: dict) -> dict:
     token = _get_intercom_access_token()
     return ListConversations(inputs, context, token).execute()
+
+
+def intercom_delete_conversation(inputs: dict, context: dict) -> dict:
+    token = _get_intercom_access_token()
+    return DeleteConversation(inputs, context, token).execute()
