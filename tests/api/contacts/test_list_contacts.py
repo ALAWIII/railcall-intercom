@@ -11,7 +11,9 @@ class TestListContacts:
 
         # 1. Not an error response
         assert "status" not in response or response.get("status") != "error"
-
+        assert response.get("pages") != None, (
+            "pages.next.starting_after should be included for future paginations requests."
+        )
         # 2. Expected keys exist
         assert "data" in response
         assert "total_count" in response
