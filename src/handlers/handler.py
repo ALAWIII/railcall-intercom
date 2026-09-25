@@ -1,8 +1,6 @@
 import os
 
-from api import CreateContact, ListContacts
-
-from handlers.api.contacts import DeleteContact
+from api import CreateContact, DeleteContact, ListContacts, ShowContact, UpdateContact
 
 
 def _get_intercom_access_token() -> str:
@@ -33,9 +31,14 @@ def intercom_create_contact(inputs: dict, context: dict) -> dict:
 
 def intercom_show_contact(inputs: dict, context: dict) -> dict:
     token = _get_intercom_access_token()
-    return CreateContact(inputs, context, token).execute()
+    return ShowContact(inputs, context, token).execute()
 
 
 def intercom_delete_contact(inputs: dict, context: dict) -> dict:
     token = _get_intercom_access_token()
     return DeleteContact(inputs, context, token).execute()
+
+
+def intercom_update_contact(inputs: dict, context: dict) -> dict:
+    token = _get_intercom_access_token()
+    return UpdateContact(inputs, context, token).execute()

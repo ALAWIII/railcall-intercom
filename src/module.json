@@ -136,7 +136,7 @@
         },
         "include_merge_history": {
           "type": "boolean",
-          "description": "Pass `true` to include the contact's merge history in the response. Only returned for contacts with a `user` role.",
+          "description": "(query url parameter); Pass `true` to include the contact's merge history in the response. Only returned for contacts with a `user` role.",
           "required": false
         }
       }
@@ -156,6 +156,89 @@
           "type": "string",
           "description": "The Intercom ID of the contact to delete.",
           "required": true
+        }
+      }
+    },
+    {
+      "id": "intercom.update_contact",
+      "title": "Update a contact by its id",
+      "description": "Updates an existing Intercom contact by ID. Provide only the fields you want to change. At least one updatable field is required.",
+      "provider": "intercom",
+      "risk": "high",
+      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "preview": true,
+      "receipt_required": true,
+      "mode": "write_requires_approval",
+      "input_schema": {
+        "contact_id": {
+          "type": "string",
+          "description": "The Intercom ID of the contact to update.",
+          "required": true
+        },
+        "include_merge_history": {
+          "type": "boolean",
+          "description": "(query url parameter); Pass `true` to include the contact's merge history in the response. Only returned for contacts with a `user` role.",
+          "required": false
+        },
+        "role": {
+          "type": "string",
+          "description": "The role of the contact.",
+          "required": false
+        },
+        "external_id": {
+          "type": "string",
+          "description": "A unique identifier for the contact which is given to Intercom",
+          "required": false
+        },
+        "email": {
+          "type": "string",
+          "description": "The contacts email",
+          "required": false
+        },
+        "email_verified": {
+          "type": "boolean",
+          "description": "Whether the contact's email address has been verified. Set to true to indicate you have verified the contact owns this email address, or false to mark it as unverified. Must be supplied together with an email in the same request; sending it without an email returns a 400.",
+          "required": false
+        },
+        "phone": {
+          "type": "string",
+          "description": "The contacts phone",
+          "required": false
+        },
+        "name": {
+          "type": "string",
+          "description": "The contacts name",
+          "required": false
+        },
+        "avatar": {
+          "type": "string",
+          "description": "An image URL containing the avatar of a contact",
+          "required": false
+        },
+        "signed_up_at": {
+          "type": "number",
+          "description": "(Unix timestamp in seconds) The time specified for when a contact signed up.",
+          "required": false
+        },
+        "last_seen_at": {
+          "type": "number",
+          "description": "(Unix timestamp in seconds) The time when the contact was last seen (either where the Intercom Messenger was installed or when specified manually).",
+          "required": false
+        },
+        "owner_id": {
+          "type": "string",
+          "description": "The id of an admin that has been assigned account ownership of the contact",
+          "required": false
+        },
+        "unsubscribed_from_emails": {
+          "type": "boolean",
+          "description": "Whether the contact is unsubscribed from emails",
+          "required": false
+        },
+        "custom_attributes": {
+          "type": "object",
+          "description": "Custom attributes for the contact. Values may be strings, numbers, booleans, arrays, or nested objects.",
+          "required": false
         }
       }
     }
