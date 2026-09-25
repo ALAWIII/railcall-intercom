@@ -17,7 +17,7 @@ from tests.support.constants import INTERCOM_ACCESS_TOKEN
 class ContactInfo:
     def __init__(self, id: str, external_id: str, email: str):
         self.id = id
-        self.external_id = id
+        self.external_id = external_id
         self.email = email
 
 
