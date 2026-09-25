@@ -117,6 +117,29 @@
           "required": false
         }
       }
+    },
+    {
+      "id": "intercom.show_contact",
+      "title": "Get a contact by its id",
+      "description": "Fetches a single contact by ID. If the contact was merged into another, requesting it returns HTTP 410 Gone with a Link header pointing to the canonical contact.",
+      "provider": "intercom",
+      "risk": "low",
+      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "preview": false,
+      "receipt_required": true,
+      "mode": "read",
+      "input_schema": {
+        "contact_id": {
+          "type": "string",
+          "description": "The id of contact.",
+          "required": true
+        },
+        "include_merge_history": {
+          "type": "boolean",
+          "description": "Pass `true` to include the contact's merge history in the response. Only returned for contacts with a `user` role.",
+          "required": false
+        }
+      }
     }
   ]
 }
