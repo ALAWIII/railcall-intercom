@@ -1,7 +1,7 @@
 {
-  "id": "agi87/intercom",
+  "id": "agi87/intercom1",
   "name": "Intercom Support, governed - contacts, conversations, replies",
-  "provider": "intercom",
+  "provider": "intercom1",
   "version": "0.1.0",
   "description": "Intercom API actions for AI agents.",
   "homepage": "https://github.com/ALAWIII/railcall-intercom",
@@ -9,7 +9,7 @@
   "license_required": false,
   "manifest_version": 2,
   "credential_spec": {
-    "provider": "intercom",
+    "provider": "intercom1",
     "category": "Data",
     "name": "Intercom",
     "required": ["INTERCOM_ACCESS_TOKEN"],
@@ -23,16 +23,16 @@
   },
   "allowed_destinations": [
     {
-      "provider": "intercom",
+      "provider": "intercom1",
       "hosts": ["api.intercom.io", "api.eu.intercom.io", "api.au.intercom.io"]
     }
   ],
   "commands": [
     {
-      "id": "intercom.list_contacts",
+      "id": "intercom1.list_contacts",
       "title": "List Intercom Contacts",
       "description": "Fetches a paginated list of all contacts (users and leads). Max 150 per page. Use starting_after cursor to get the next page. Read-only.",
-      "provider": "intercom",
+      "provider": "intercom1",
       "mode": "read",
       "risk": "low",
       "requires": ["INTERCOM_ACCESS_TOKEN"],
@@ -52,10 +52,10 @@
       }
     },
     {
-      "id": "intercom.create_contact",
+      "id": "intercom1.create_contact",
       "title": "Create a new Intercom contact",
       "description": "Creates a new user or lead in Intercom. Requires at least one identifier: email, external_id, or role. Returns the created contact object with id and attributes.",
-      "provider": "intercom",
+      "provider": "intercom1",
       "risk": "high",
       "requires": ["INTERCOM_ACCESS_TOKEN"],
       "preview": true,
@@ -125,10 +125,10 @@
       }
     },
     {
-      "id": "intercom.show_contact",
+      "id": "intercom1.show_contact",
       "title": "Get a contact by its id",
       "description": "Fetches a single contact by ID. If the contact was merged into another, requesting it returns HTTP 410 Gone with a Link header pointing to the canonical contact.",
-      "provider": "intercom",
+      "provider": "intercom1",
       "risk": "low",
       "requires": ["INTERCOM_ACCESS_TOKEN"],
       "preview": false,
@@ -148,10 +148,10 @@
       }
     },
     {
-      "id": "intercom.delete_contact",
+      "id": "intercom1.delete_contact",
       "title": "Delete a contact by its id",
       "description": "Permanently deletes a single contact by its ID. Warning: Intercom deletions are permanent and cannot be undone.",
-      "provider": "intercom",
+      "provider": "intercom1",
       "risk": "high",
       "requires": ["INTERCOM_ACCESS_TOKEN"],
       "preview": true,
@@ -166,10 +166,10 @@
       }
     },
     {
-      "id": "intercom.update_contact",
+      "id": "intercom1.update_contact",
       "title": "Update a contact by its id",
       "description": "Updates an existing Intercom contact by ID. Provide only the fields you want to change. At least one updatable field is required.",
-      "provider": "intercom",
+      "provider": "intercom1",
       "risk": "high",
       "requires": ["INTERCOM_ACCESS_TOKEN"],
       "preview": true,
@@ -249,10 +249,10 @@
       }
     },
     {
-      "id": "intercom.merge_contact",
+      "id": "intercom1.merge_contact",
       "title": "Merge a lead and a user",
       "description": "Merges a lead contact into a user contact. The lead contact is permanently destroyed and cannot be recovered. Provide skip_duplicate_validation='true' if the contacts share no matching email or phone.",
-      "provider": "intercom",
+      "provider": "intercom1",
       "risk": "high",
       "requires": ["INTERCOM_ACCESS_TOKEN"],
       "preview": true,
@@ -282,10 +282,10 @@
       }
     },
     {
-      "id": "intercom.list_conversations",
+      "id": "intercom1.list_conversations",
       "title": "List all conversations",
       "description": "Fetches a paginated list of all conversations. Use the `starting_after` cursor from the previous response to fetch subsequent pages.",
-      "provider": "intercom",
+      "provider": "intercom1",
       "mode": "read",
       "risk": "low",
       "requires": ["INTERCOM_ACCESS_TOKEN"],
@@ -305,10 +305,10 @@
       }
     },
     {
-      "id": "intercom.delete_conversation",
+      "id": "intercom1.delete_conversation",
       "title": "Delete a conversation by its id.",
       "description": "Permanently deletes a single conversation. If `retain_metrics=true` (default), reporting data is kept. If `retain_metrics=false`, all reporting data is also deleted (requires `delete_conversations_and_metrics` OAuth scope).",
-      "provider": "intercom",
+      "provider": "intercom1",
       "risk": "high",
       "mode": "write_requires_approval",
       "requires": ["INTERCOM_ACCESS_TOKEN"],
@@ -328,10 +328,10 @@
       }
     },
     {
-      "id": "intercom.retrieve_conversation",
+      "id": "intercom1.retrieve_conversation",
       "title": "Fetches a conversation by its id.",
       "description": "You can fetch the details of a single conversation.This will return a single Conversation model with all its conversation parts.",
-      "provider": "intercom",
+      "provider": "intercom1",
       "risk": "low",
       "mode": "read",
       "requires": ["INTERCOM_ACCESS_TOKEN"],
@@ -356,10 +356,10 @@
       }
     },
     {
-      "id": "intercom.create_conversation",
+      "id": "intercom1.create_conversation",
       "title": "Creates a conversation.",
       "description": "You can create a conversation that has been initiated by a contact (ie. user or lead).\nThe conversation can be an in-app message only.",
-      "provider": "intercom",
+      "provider": "intercom1",
       "risk": "high",
       "mode": "write_requires_approval",
       "requires": ["INTERCOM_ACCESS_TOKEN"],
@@ -404,10 +404,10 @@
       }
     },
     {
-      "id": "intercom.update_conversation",
+      "id": "intercom1.update_conversation",
       "title": "Update a conversation.",
       "description": "You can update an existing conversation. This endpoint handles both conversation updates and custom object associations.",
-      "provider": "intercom",
+      "provider": "intercom1",
       "risk": "high",
       "mode": "write_requires_approval",
       "requires": ["INTERCOM_ACCESS_TOKEN"],
@@ -447,10 +447,10 @@
       }
     },
     {
-      "id": "intercom.reply_conversation",
+      "id": "intercom1.reply_conversation",
       "title": "Reply to a conversation.",
       "description": "You can reply to a conversation with a message from an admin or on behalf of a contact, or with a note for admins, if you set type = 'user', then exactly one field of [intercom_user_id, email, user_id] should be provided, otherwise if you set type = 'admin' then you have to provide only 'admin_id'.",
-      "provider": "intercom",
+      "provider": "intercom1",
       "risk": "high",
       "mode": "write_requires_approval",
       "requires": ["INTERCOM_ACCESS_TOKEN"],
@@ -505,10 +505,10 @@
       }
     },
     {
-      "id": "intercom.identify_admin",
+      "id": "intercom1.identify_admin",
       "title": "Identify admin",
       "description": "View the currently authenticated admin along with workspace information.",
-      "provider": "intercom",
+      "provider": "intercom1",
       "risk": "low",
       "mode": "read",
       "requires": ["INTERCOM_ACCESS_TOKEN"],
