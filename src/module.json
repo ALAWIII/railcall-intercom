@@ -10,7 +10,7 @@
   "manifest_version": 2,
   "credential_spec": {
     "provider": "intercom",
-    "category": "crm",
+    "category": "Data",
     "name": "Intercom",
     "required": ["INTERCOM_ACCESS_TOKEN"],
     "shape": "dict",
