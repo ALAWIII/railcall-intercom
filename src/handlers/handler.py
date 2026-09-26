@@ -1,6 +1,6 @@
 import os
 
-from api import (
+from handlers.api import (
     CreateContact,
     CreateConversation,
     DeleteContact,
