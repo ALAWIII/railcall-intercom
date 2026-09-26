@@ -30,8 +30,6 @@ This module communicates directly with your live Intercom workspace. Your secret
 
 Run the `intercom.identify_admin` command. If it returns your workspace name and your admin ID, your credentials are working perfectly.
 
----
-
 ## 🛠 Supported Commands
 
 The module covers the top 13 essential actions for support operations.
@@ -68,8 +66,6 @@ The module covers the top 13 essential actions for support operations.
 | Command ID                | Mode     | What it does                                                                    |
 | :------------------------ | :------- | :------------------------------------------------------------------------------ |
 | `intercom.identify_admin` | **Read** | Verify connection and fetch the authenticated admin's ID and workspace details. |
-
----
 
 ## 🛡 Security & Guardrails
 
