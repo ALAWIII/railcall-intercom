@@ -1,9 +1,13 @@
 {
   "id": "agi87/intercom",
-  "name": "intercom",
+  "name": "Intercom Support, governed - contacts, conversations, replies",
   "provider": "intercom",
   "version": "0.1.0",
   "description": "Intercom API actions for AI agents.",
+  "homepage": "https://github.com/ALAWIII/railcall-intercom",
+  "tests_url": "https://github.com/ALAWIII/railcall-intercom/tree/main/tests",
+  "license_required": false,
+  "manifest_version": 2,
   "credential_spec": {
     "provider": "intercom",
     "category": "support",
@@ -14,10 +18,15 @@
     "read_write": "write"
   },
   "requires": {
-    "network": ["api.intercom.io"]
+    "network": ["api.intercom.io", "api.eu.intercom.io", "api.au.intercom.io"],
+    "subprocess": false
   },
-  "license_required": false,
-  "manifest_version": 2,
+  "allowed_destinations": [
+    {
+      "provider": "intercom",
+      "hosts": ["api.intercom.io", "api.eu.intercom.io", "api.au.intercom.io"]
+    }
+  ],
 
   "commands": [
     {
