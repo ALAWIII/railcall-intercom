@@ -12,22 +12,31 @@
     "provider": "intercom",
     "category": "support",
     "name": "Intercom",
-    "required": ["INTERCOM_ACCESS_TOKEN"],
+    "required": [
+      "INTERCOM_ACCESS_TOKEN"
+    ],
     "shape": "dict",
     "risk": "high",
     "read_write": "write"
   },
   "requires": {
-    "network": ["api.intercom.io", "api.eu.intercom.io", "api.au.intercom.io"],
+    "network": [
+      "api.intercom.io",
+      "api.eu.intercom.io",
+      "api.au.intercom.io"
+    ],
     "subprocess": false
   },
   "allowed_destinations": [
     {
       "provider": "intercom",
-      "hosts": ["api.intercom.io", "api.eu.intercom.io", "api.au.intercom.io"]
+      "hosts": [
+        "api.intercom.io",
+        "api.eu.intercom.io",
+        "api.au.intercom.io"
+      ]
     }
   ],
-
   "commands": [
     {
       "id": "intercom.list_contacts",
@@ -36,10 +45,11 @@
       "provider": "intercom",
       "mode": "read",
       "risk": "low",
-      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "requires": [
+        "INTERCOM_ACCESS_TOKEN"
+      ],
       "preview": false,
       "receipt_required": true,
-
       "input_schema": {
         "per_page": {
           "type": "number",
@@ -59,11 +69,12 @@
       "description": "Creates a new user or lead in Intercom. Requires at least one identifier: email, external_id, or role. Returns the created contact object with id and attributes.",
       "provider": "intercom",
       "risk": "high",
-      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "requires": [
+        "INTERCOM_ACCESS_TOKEN"
+      ],
       "preview": true,
       "receipt_required": true,
       "mode": "write_requires_approval",
-
       "input_schema": {
         "role": {
           "type": "string",
@@ -133,7 +144,9 @@
       "description": "Fetches a single contact by ID. If the contact was merged into another, requesting it returns HTTP 410 Gone with a Link header pointing to the canonical contact.",
       "provider": "intercom",
       "risk": "low",
-      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "requires": [
+        "INTERCOM_ACCESS_TOKEN"
+      ],
       "preview": false,
       "receipt_required": true,
       "mode": "read",
@@ -156,7 +169,9 @@
       "description": "Permanently deletes a single contact by its ID. Warning: Intercom deletions are permanent and cannot be undone.",
       "provider": "intercom",
       "risk": "high",
-      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "requires": [
+        "INTERCOM_ACCESS_TOKEN"
+      ],
       "preview": true,
       "receipt_required": true,
       "mode": "write_requires_approval",
@@ -174,7 +189,9 @@
       "description": "Updates an existing Intercom contact by ID. Provide only the fields you want to change. At least one updatable field is required.",
       "provider": "intercom",
       "risk": "high",
-      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "requires": [
+        "INTERCOM_ACCESS_TOKEN"
+      ],
       "preview": true,
       "receipt_required": true,
       "mode": "write_requires_approval",
@@ -257,7 +274,9 @@
       "description": "Merges a lead contact into a user contact. The lead contact is permanently destroyed and cannot be recovered. Provide skip_duplicate_validation='true' if the contacts share no matching email or phone.",
       "provider": "intercom",
       "risk": "high",
-      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "requires": [
+        "INTERCOM_ACCESS_TOKEN"
+      ],
       "preview": true,
       "receipt_required": true,
       "mode": "write_requires_approval",
@@ -291,10 +310,11 @@
       "provider": "intercom",
       "mode": "read",
       "risk": "low",
-      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "requires": [
+        "INTERCOM_ACCESS_TOKEN"
+      ],
       "preview": false,
       "receipt_required": true,
-
       "input_schema": {
         "per_page": {
           "type": "number",
@@ -315,10 +335,11 @@
       "provider": "intercom",
       "risk": "high",
       "mode": "write_requires_approval",
-      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "requires": [
+        "INTERCOM_ACCESS_TOKEN"
+      ],
       "preview": true,
       "receipt_required": true,
-
       "input_schema": {
         "conversation_id": {
           "type": "number",
@@ -339,10 +360,11 @@
       "provider": "intercom",
       "risk": "low",
       "mode": "read",
-      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "requires": [
+        "INTERCOM_ACCESS_TOKEN"
+      ],
       "preview": false,
       "receipt_required": true,
-
       "input_schema": {
         "conversation_id": {
           "type": "number",
@@ -368,10 +390,11 @@
       "provider": "intercom",
       "risk": "high",
       "mode": "write_requires_approval",
-      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "requires": [
+        "INTERCOM_ACCESS_TOKEN"
+      ],
       "preview": true,
       "receipt_required": true,
-
       "input_schema": {
         "from_type": {
           "type": "string",
@@ -417,7 +440,9 @@
       "provider": "intercom",
       "risk": "high",
       "mode": "write_requires_approval",
-      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "requires": [
+        "INTERCOM_ACCESS_TOKEN"
+      ],
       "preview": true,
       "receipt_required": true,
       "input_schema": {
@@ -460,7 +485,9 @@
       "provider": "intercom",
       "risk": "high",
       "mode": "write_requires_approval",
-      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "requires": [
+        "INTERCOM_ACCESS_TOKEN"
+      ],
       "preview": true,
       "receipt_required": true,
       "input_schema": {
@@ -518,10 +545,13 @@
       "provider": "intercom",
       "risk": "low",
       "mode": "read",
-      "requires": ["INTERCOM_ACCESS_TOKEN"],
+      "requires": [
+        "INTERCOM_ACCESS_TOKEN"
+      ],
       "preview": false,
       "receipt_required": true,
       "input_schema": {}
     }
-  ]
+  ],
+  "publisher_pubkey": "3522878f1c7050d3470c514ee53efbec47d66637792c52382cbe209d8f006895"
 }
