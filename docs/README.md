@@ -13,7 +13,7 @@ Get up and running in under 5 minutes.
 Run the following command in your RailCall CLI:
 
 ```bash
-railcall market install agi87/intercom
+railcall market install agi87/intercom1
 ```
 
 ### 2. Configure Credentials (The Trust Surface)
@@ -28,7 +28,7 @@ This module communicates directly with your live Intercom workspace. Your secret
 
 ### 3. Verify Connection
 
-Run the `intercom.identify_admin` command. If it returns your workspace name and your admin ID, your credentials are working perfectly.
+Run the `intercom1.identify_admin` command. If it returns your workspace name and your admin ID, your credentials are working perfectly.
 
 ## 🛠 Supported Commands
 
@@ -41,31 +41,31 @@ The module covers the top 13 essential actions for support operations.
 
 ### 📥 Inbox & Conversations
 
-| Command ID                       | Mode      | What it does                                                                              |
-| :------------------------------- | :-------- | :---------------------------------------------------------------------------------------- |
-| `intercom.list_conversations`    | **Read**  | Page through active, snoozed, and closed support tickets.                                 |
-| `intercom.retrieve_conversation` | **Read**  | Fetch the full message thread, translations, and metadata for a specific ticket.          |
-| `intercom.create_conversation`   | **Write** | Initiate a new support ticket on behalf of a user or lead.                                |
-| `intercom.reply_conversation`    | **Write** | Draft a reply to a customer, or leave a private internal note for your team.              |
-| `intercom.update_conversation`   | **Write** | Update ticket titles, mark as read, or attach custom attributes (e.g., `priority: high`). |
-| `intercom.delete_conversation`   | **Write** | Permanently delete a spam or duplicate ticket.                                            |
+| Command ID                        | Mode      | What it does                                                                              |
+| :-------------------------------- | :-------- | :---------------------------------------------------------------------------------------- |
+| `intercom1.list_conversations`    | **Read**  | Page through active, snoozed, and closed support tickets.                                 |
+| `intercom1.retrieve_conversation` | **Read**  | Fetch the full message thread, translations, and metadata for a specific ticket.          |
+| `intercom1.create_conversation`   | **Write** | Initiate a new support ticket on behalf of a user or lead.                                |
+| `intercom1.reply_conversation`    | **Write** | Draft a reply to a customer, or leave a private internal note for your team.              |
+| `intercom1.update_conversation`   | **Write** | Update ticket titles, mark as read, or attach custom attributes (e.g., `priority: high`). |
+| `intercom1.delete_conversation`   | **Write** | Permanently delete a spam or duplicate ticket.                                            |
 
 ### 👥 Contacts & CRM
 
-| Command ID                | Mode      | What it does                                                                 |
-| :------------------------ | :-------- | :--------------------------------------------------------------------------- |
-| `intercom.list_contacts`  | **Read**  | Search and paginate through your user and lead database.                     |
-| `intercom.show_contact`   | **Read**  | Fetch full profile data, tags, and company associations for a specific user. |
-| `intercom.create_contact` | **Write** | Onboard a new lead or user into your Intercom workspace.                     |
-| `intercom.update_contact` | **Write** | Update user attributes, emails, roles, or custom data points.                |
-| `intercom.delete_contact` | **Write** | Permanently remove a contact from your database.                             |
-| `intercom.merge_contact`  | **Write** | Deduplicate your CRM by safely merging two contact records together.         |
+| Command ID                 | Mode      | What it does                                                                 |
+| :------------------------- | :-------- | :--------------------------------------------------------------------------- |
+| `intercom1.list_contacts`  | **Read**  | Search and paginate through your user and lead database.                     |
+| `intercom1.show_contact`   | **Read**  | Fetch full profile data, tags, and company associations for a specific user. |
+| `intercom1.create_contact` | **Write** | Onboard a new lead or user into your Intercom workspace.                     |
+| `intercom1.update_contact` | **Write** | Update user attributes, emails, roles, or custom data points.                |
+| `intercom1.delete_contact` | **Write** | Permanently remove a contact from your database.                             |
+| `intercom1.merge_contact`  | **Write** | Deduplicate your CRM by safely merging two contact records together.         |
 
 ### ⚙️ System
 
-| Command ID                | Mode     | What it does                                                                    |
-| :------------------------ | :------- | :------------------------------------------------------------------------------ |
-| `intercom.identify_admin` | **Read** | Verify connection and fetch the authenticated admin's ID and workspace details. |
+| Command ID                 | Mode     | What it does                                                                    |
+| :------------------------- | :------- | :------------------------------------------------------------------------------ |
+| `intercom1.identify_admin` | **Read** | Verify connection and fetch the authenticated admin's ID and workspace details. |
 
 ## 🛡 Security & Guardrails
 
