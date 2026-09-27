@@ -7,7 +7,7 @@
 
 A governed Intercom module for the [RailCall](https://railcall.ai) AI agent platform. This repository contains the source code, integration tests, and development documentation for the Intercom integration.
 
-> **📦 End-User Documentation:** For marketplace features, installation instructions, and usage guides, please see **[docs/README.md](src/README.md)**.
+> **📦 End-User Documentation:** For marketplace features, installation instructions, and usage guides, please see **[docs/README.md](docs/README.md)**.
 
 ## 📂 Project Structure
 
